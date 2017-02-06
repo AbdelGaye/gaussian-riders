@@ -1,0 +1,2 @@
+Our project is to create a web application that enables professors to input student grades for a course and desired metrics such as average, median, and standard deviation. The application outputs individual students’ adapted grades such that the desired metrics are met. It will also allow visualisation of the metrics.
+The goal of this project is to enable professors to have greater control of the distribution of grades for a course.
