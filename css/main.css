@@ -1,0 +1,95 @@
+@font-face {
+	font-family: "Candara";
+	src: url("../fonts/Candara.ttf") format("truetype");
+}
+
+body {
+	background: #f4f3f3;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-family: "Candara", Arial, Helvetica;
+	color: #600;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+
+}
+
+a {
+	color: inherit;
+}
+
+a:hover {
+	color: #300;
+}
+
+#main {
+	width: 750px;
+	margin: 0 auto;
+	padding: 5px 20px 20px 20px;
+	background: #fff;
+}
+
+.titlebox {
+	text-align: center;
+	margin-top: 0;
+	padding-top: 1px;
+	color: #200;
+}
+
+.tablecontainer {
+	text-align: center;
+}
+
+.maintable {
+	text-align: center;
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+}
+
+.row {
+	text-align: left;
+}
+
+.row th {
+	padding-left: 4px;
+	padding-right: 4px;
+	background: #f4f3f3;
+	border-left: 2px solid #f4f3f3;
+	border-right: 2px solid #f4f3f3;
+}
+
+.row td {
+	border-left: 2px solid #f4f3f3;
+	border-right: 2px solid #f4f3f3;
+}
+
+.lastRow {
+	text-align: center;
+	border-top: 2px solid #f4f3f3;
+}
+
+.lastRow td {
+	border-left: none;
+	border-right: none;
+}
+
+.textfield {
+	width: 95%;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.active {
+	border-radius: 4px;
+	border-width: 1px;
+}
+
+.inactive {
+	border-width: 0px;
+}
