@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="js/TableCellStateSwitch.js"></script>
+	<script type="text/javascript" src="js/sorttable.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Grading Assistant - Administrator View</title>
 </head>
@@ -17,24 +18,31 @@
 
 		<div class="tablecontainer">
 			<!-- Note: I believe there is no need for form tags because this will all be client-side -->
-			<table class="maintable">
-				<tr class="row">
-					<th scope="col"></th> <!-- This column is for row options (empty in the header row) -->
-					<th scope="col" class="maincol">Student ID</th>
-					<th scope="col" class="maincol">Last Name</th>
-					<th scope="col" class="maincol">First Name</th>
-					<th scope="col" class="maincol">Grade</th>
-				</tr>
-				<tr class="row">
-					<td><a href="#">#</a></td> <!-- TODO: Add first row options (all normal options except delete row) -->
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr class="row lastRow">
-					<td colspan="5"><a href="#">Add Student (TODO)</a></td> <!-- TODO: Add the create new row option, possibly with a fancy + symbol-->
-				</tr>
+			<table class="sortable maintable">
+				<thead>
+
+					<tr class="row">
+						<th scope="col"></th> <!-- This column is for row options (empty in the header row) -->
+						<th scope="col" class="maincol">Student ID</th>
+						<th scope="col" class="maincol">Last Name</th>
+						<th scope="col" class="maincol">First Name</th>
+						<th scope="col" class="maincol">Grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="row">
+						<td><a href="#">#</a></td> <!-- TODO: Add first row options (all normal options except delete row) -->
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="row lastRow">
+						<td colspan="5"><a href="#">Add Student (TODO)</a></td> <!-- TODO: Add the create new row option, possibly with a fancy + symbol-->
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	</div>
