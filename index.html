@@ -18,7 +18,7 @@
     color:#616263;
     overflow: hidden; 
     height: 20px;    
-    width: 40px;
+    width: 20px;
     position: relative;
     display: block;
 }
@@ -30,11 +30,12 @@ select{
     border: 0;
     outline: none;
     font-size: 10px;       
-    width: 80px;
+    width: 40px;
    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
+/*select#select option[value="arrow"] { background-image:url(imgs/clear.png);}*/
 </style>
 </head>
 
@@ -50,23 +51,25 @@ select{
 					<tr class="row">
 						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('sid')"/></a> Student ID 
 						<select id="select" onChange="OnSelected">
-													<option style="background-image:url(./imgs/arrow_down.png);">Numeric</option>
+													<option value="arrow" src="./imgs/arrow_down.png" ></option>
         											<option value="numeric">Numeric</option>
         											<option value="rnumeric">Reverse Numeric</option>
     					</select></th>     
 						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('ln')"/></a> Last Name
 						<select id="select" onChange="OnSelected">
-
+													<option value="arrow" src="./imgs/arrow_down.png"></option>
         											<option value="alphabetic">Alphabetic</option>
         											<option value="ralphabetic">Reverse Alphabetic</option>
     					</select></th> </th>
 						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('fn')"/></a> First Name
 						<select id="select" onChange="OnSelected">
+													<option value="arrow" src="./imgs/arrow_down.png"></option>
         											<option value="alphabetic">Alphabetic</option>
         											<option value="ralphabetic">Reverse Alphabetic</option>
     					</select></th>
 						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade')"/></a> Grade
 						<select id="select" onChange="OnSelected">
+													<option value="arrow" src="./imgs/arrow_down.png"></option>
         											<option value="numeric">Numeric</option>
         											<option value="rnumeric">Reverse Numeric</option>
     					</select></th>
