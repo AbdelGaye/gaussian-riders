@@ -61,7 +61,7 @@ input {
 }
 
 .maincol {
-	width: 24%;
+	width: 25%;
 }
 
 .row {
@@ -89,4 +89,9 @@ input {
 .lastRow td {
 	border-left: none;
 	border-right: none;
+}
+
+.clearCell {
+	border-right: none !important;
+
 }
