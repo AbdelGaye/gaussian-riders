@@ -4,6 +4,9 @@
 
 // Clear column depending on type of column to clear
 function clearColumn(col) {
+	// Make columns non-sortable while clearing them
+	$('[scope="col"]').attr('class', 'sorttable_nosort maincol');
+
 	// Clear Student ID's column
 	if (col === 'sid') {
 		// jQuery selector that iterates through each td with name attribute = "sid" and empties td
@@ -45,3 +48,4 @@ function clearRow() {
 	$('#secondrow [name="fn"]').html('');
 	$('#secondrow [name="grade"]').html('');
 }
+
