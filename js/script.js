@@ -48,3 +48,20 @@ function clearRow() {
 	$('#secondrow [name="fn"]').html('');
 	$('#secondrow [name="grade"]').html('');
 }
+
+//Slected sorting button
+function OnSelected()
+	{
+		if (document.getElementById('select').value == "numeric"){
+    		//Sort function
+		}
+        if (document.getElementById('select').value == "rnumeric"){
+            //Sort function
+        }
+        if (document.getElementById('select').value == "alphabetic"){
+            //Sort function
+        }
+        if (document.getElementById('select').value == "ralphabetic"){
+            //Sort function
+        }
+	}
