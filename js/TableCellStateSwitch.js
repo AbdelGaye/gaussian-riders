@@ -34,6 +34,28 @@ $(document).ready(function() {
 	    var $this = $(this);
 	    var cell = $this.attr('name');
 	    var lastval = $this.text();
+	    var isvalid = true;
+
+
+        var checkvalidity = function(value) {
+        	//ensure the number only fields can only accept numbers
+			if (cell === "sid" || cell === "grade") {
+				if (/^$|^\d+$/.test(value)) {
+					isvalid = true;
+				} else {
+					isvalid = false;
+				}
+			}
+
+			//ensure the letter only fields can only accept letters
+			else if (cell === "ln" || cell === "fn") {
+				if (/^$|^[a-zA-Z ÀàÉéÊêÈèÎîÔôÙùÛûÇç\-]+$/.test(value)) {
+					isvalid = true;
+				} else {
+					isvalid = false;
+				}
+			}
+        }
 
 	    //td with tags other than input should not be editable
 	    if($(this).find("*").length && !$(this).find("input").length) {
@@ -49,7 +71,15 @@ $(document).ready(function() {
 		        //called when user hits the tab key or clicks elsewhere on the screen
 		        //when td loses focus
 		        blur: function() {
-		           $this.text(this.value);
+		        	checkvalidity(this.value);
+
+		        	if (isvalid) {
+			        	$this.text(this.value);
+			    	} else {
+			    		$this.attr("class", "valid");
+			    		$this.text(lastval);
+			    	}
+
 		        },
 
 		        //called when the user releases a key on the keyboard
@@ -60,22 +90,12 @@ $(document).ready(function() {
 						$feature.blur();
 					}
 
-					//ensure the number only fields can only accept numbers
-					else if (cell === "sid" || cell === "grade") {
-						if (/^$|^\d+$/.test(this.value)) {
-							lastval = this.value;
-						} else {
-							this.value = lastval;
-						}
-					}
+					checkvalidity(this.value);
 
-					//ensure the letter only fields can only accept letters
-					else if (cell === "ln" || cell === "fn") {
-						if (/^$|^[a-zA-Z ÀàÉéÊêÈèÎîÔôÙùÛûÇç\-]+$/.test(this.value)) {
-							lastval = this.value;
-						} else {
-							this.value = lastval;
-						}
+					if (isvalid) {
+						$this.attr("class", "valid");
+					} else {
+						$this.attr("class", "invalid");
 					}
 	        	}
 	    	}

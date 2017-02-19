@@ -35,6 +35,10 @@ input {
 	border-width: 1px;
 }
 
+.invalid input {
+	background: #f88;
+}
+
 #main {
 	width: 750px;
 	margin: 0 auto;
@@ -93,5 +97,4 @@ input {
 
 .clearCell {
 	border-right: none !important;
-
 }
