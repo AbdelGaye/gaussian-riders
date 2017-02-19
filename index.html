@@ -2,7 +2,10 @@
 <html>
 
 <head>
+	<!-- JavaScript script -->
+	<script type="text/javascript" src="js/script.js"></script>
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+	<!-- jQuery Library -->
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="js/TableCellStateSwitch.js"></script>
 	<script type="text/javascript" src="js/sorttable.js"></script>
@@ -20,19 +23,20 @@
 			<table class="sortable maintable">
 				<thead>
 					<tr class="row">
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" /></a> Student ID</th>
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" /></a> Last Name</th>
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" /></a> First Name</th>
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" /></a> Grade</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('sid')"/></a> Student ID</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('ln')"/></a> Last Name</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('fn')"/></a> First Name</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade')"/></a> Grade</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="row">
+					<!-- Change ID -->
+					<tr class="row" id="secondrow">
 						<td name="sid"></td>
 						<td name="ln"></td>
 						<td name="fn"></td>
 						<td name="grade"></td>
-						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" /></a></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow()"/></a></td>
 					</tr>
 				</tbody>
 				<tfoot>
