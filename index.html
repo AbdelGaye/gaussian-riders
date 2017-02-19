@@ -11,6 +11,42 @@
 	<script type="text/javascript" src="js/sorttable.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Grading Assistant - Administrator View</title>
+	<style>
+.select {
+    border:1px solid #e3e3e3;    
+    border-radius:3px;
+    color:#616263;
+    overflow: hidden; 
+    height: 20px;    
+    width: 40px;
+    position: relative;
+    display: block;
+}
+
+select{       
+    height: 30px;
+    padding: 5px;
+    background-color:#ececec;
+    border: 0;
+    outline: none;
+    font-size: 10px;       
+    width: 80px;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.select:after {
+    content:url(imgs/arrow_down.png);    
+    padding: 12px 8px;
+    position: absolute; right: 10px; top: 0;    
+    z-index: 1;
+    text-align: center;
+    width: 10%;
+    height: 10%;      
+    pointer-events: none;
+    box-sizing: border-box;   
+}
+</style>
 </head>
 
 <body>
@@ -23,10 +59,28 @@
 			<table class="sortable maintable">
 				<thead>
 					<tr class="row">
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('sid')"/></a> Student ID</th>
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('ln')"/></a> Last Name</th>
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('fn')"/></a> First Name</th>
-						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade')"/></a> Grade</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('sid')"/></a> Student ID 
+						<select id="select" onChange="OnSelected">
+        											<option value="numeric">Numeric</option>
+        											<option value="rnumeric">Reverse Numeric</option>
+    					</select></th>     
+
+
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('ln')"/></a> Last Name
+						<select id="select" onChange="OnSelected">
+        											<option value="alphabetic">Alphabetic</option>
+        											<option value="ralphabetic">Reverse Alphabetic</option>
+    					</select></th> </th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('fn')"/></a> First Name
+						<select id="select" onChange="OnSelected">
+        											<option value="alphabetic">Alphabetic</option>
+        											<option value="ralphabetic">Reverse Alphabetic</option>
+    					</select></th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade')"/></a> Grade
+						<select id="select" onChange="OnSelected">
+        											<option value="numeric">Numeric</option>
+        											<option value="rnumeric">Reverse Numeric</option>
+    					</select></th>
 					</tr>
 				</thead>
 				<tbody>
