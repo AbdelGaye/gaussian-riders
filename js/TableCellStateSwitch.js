@@ -32,6 +32,8 @@ $(document).ready(function() {
 	//called when user clicks on a td
 	$('td').on('click', function() {
 	    var $this = $(this);
+	    var cell = $this.attr('name');
+	    var lastval = $this.text();
 
 	    //td with tags other than input should not be editable
 	    if($(this).find("*").length && !$(this).find("input").length) {
@@ -56,6 +58,24 @@ $(document).ready(function() {
 		        	//td should lose focus
 					if (key.which === enterKeyCode) {
 						$feature.blur();
+					}
+
+					//ensure the number only fields can only accept numbers
+					else if (cell === "sid" || cell === "grade") {
+						if (/^$|^\d+$/.test(this.value)) {
+							lastval = this.value;
+						} else {
+							this.value = lastval;
+						}
+					}
+
+					//ensure the letter only fields can only accept letters
+					else if (cell === "ln" || cell === "fn") {
+						if (/^$|^[a-zA-Z ÀàÉéÊêÈèÎîÔôÙùÛûÇç\-]+$/.test(this.value)) {
+							lastval = this.value;
+						} else {
+							this.value = lastval;
+						}
 					}
 	        	}
 	    	}
