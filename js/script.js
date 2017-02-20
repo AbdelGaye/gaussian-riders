@@ -41,11 +41,11 @@ function clearColumn(col) {
 }
 
 // !!! need to figure out a way to clear a specific row after dynamically adding rows
-function clearRow() {
+function clearRow(id) {
 	// Empty each row's cells content
-	$('#secondrow [name="sid"]').html('');
-	$('#secondrow [name="ln"]').html('');
-	$('#secondrow [name="fn"]').html('');
-	$('#secondrow [name="grade"]').html('');
+	$('#' + id + ' [name="sid"]').html('');
+	$('#' + id + ' [name="ln"]').html('');
+	$('#' + id + ' [name="fn"]').html('');
+	$('#' + id + ' [name="grade"]').html('');
 }
 
