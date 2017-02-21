@@ -97,4 +97,5 @@ input {
 
 .clearCell {
 	border-right: none !important;
+	border-left: none !important;
 }
