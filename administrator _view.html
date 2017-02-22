@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- JavaScript script -->
+	<script type="text/javascript" src="js/script.js"></script>
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+	<!-- jQuery Library -->
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/TableCellStateSwitch.js"></script>
+	<script type="text/javascript" src="js/sorttable.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Grading Assistant - Administrator View</title>
+</head>
+
+<body>
+	<div id="main">
+		<div class="titlebox">
+			<h1>Grading Assistant - Administrator View</h1>
+		</div>
+		<div class="tablecontainer">
+			<!-- Note: I believe there is no need for form tags because this will all be client-side -->
+			<table class="sortable maintable">
+				<thead>
+					<tr class="row">
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('sid')"/></a> Student ID</th>     
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('ln')"/></a> Last Name</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('fn')"/></a> First Name</th>
+						<th scope="col" class="maincol"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade')"/></a> Grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Change ID -->
+					<tr class="row" id="row0">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row0')"/></a></td>
+					</tr>
+					<tr class="row" id="row1">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row1')"/></a></td>
+					</tr>
+					<tr class="row" id="row2">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row2')"/></a></td>
+					</tr>
+					<tr class="row" id="row3">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row3')"/></a></td>
+					</tr>
+					<tr class="row" id="row4">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row4')"/></a></td>
+					</tr>
+					<tr class="row" id="row5">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row5')"/></a></td>
+					</tr>
+					<tr class="row" id="row6">
+						<td name="sid"></td>
+						<td name="ln"></td>
+						<td name="fn"></td>
+						<td name="grade"></td>
+						<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row6')"/></a></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="row lastRow">
+						<td colspan="4"><a href="#">Add Student (TODO)</a></td> <!-- TODO: Add the create new row option, possibly with a fancy + symbol-->
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
