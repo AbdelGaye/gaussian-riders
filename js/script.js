@@ -1,6 +1,4 @@
-var nbRows = 7;
-
-
+var nbRows = 1;
 
 // Clear column depending on type of column to clear
 function clearColumn(col) {
@@ -70,5 +68,7 @@ function addRow() {
 
 	// Increment number of rows by 1
 	nbRows++;
+
+	updateClickableCells();
 }
 

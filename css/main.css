@@ -87,6 +87,12 @@ input {
 
 .lastRow {
 	text-align: center;
+	border-top: 2px solid #f4f3f3;
+}
+
+.lastRow td {
+	border-left: none !important;
+	border-right: none !important;
 }
 
 .clearCell {

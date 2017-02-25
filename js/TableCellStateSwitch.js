@@ -17,7 +17,7 @@
 var enterKeyCode = 13;
 var tabKeyCode = 9;
 
-$(document).ready(function() {  
+var updateClickableCells = function() {  
 
 	//called when a key is pressed 
 	$('td').on('keydown', function(key) {
@@ -105,4 +105,6 @@ $(document).ready(function() {
 	    $feature.appendTo($this.empty()).focus();
 	}); 
  
-});
+}
+
+$(document).ready(updateClickableCells);
