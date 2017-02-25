@@ -29,7 +29,7 @@
 						<th scope="col" class="maincol sorttable_numeric"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade')"/></a> Grade</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="student_table">
 					<!-- Change ID -->
 					<tr class="row" id="row0">
 						<td name="sid"></td>
@@ -83,7 +83,7 @@
 				</tbody>
 				<tfoot>
 					<tr class="row lastRow">
-						<td colspan="4"><a href="#">Add Student (TODO)</a></td> <!-- TODO: Add the create new row option, possibly with a fancy + symbol-->
+						<td colspan="4"><a href="#" onclick="addRow()">Add Student (TODO)</a></td> <!-- TODO: Add the create new row option, possibly with a fancy + symbol-->
 					</tr>
 				</tfoot>
 			</table>
