@@ -1,4 +1,6 @@
 var nbRows = 1;
+var currAverage = 0;
+var currStdDeviation = 0;
 
 // Clear column depending on type of column to clear
 function clearColumn(col) {
@@ -68,7 +70,48 @@ function addRow() {
 
 	// Increment number of rows by 1
 	nbRows++;
-
 	updateClickableCells();
+}
+
+function computeClassAverage() {
+	var sum = 0;
+	var numRows = 0;
+	var table = $(student_table);
+
+	table.find('tr').each(function(i, el) {
+		var $tds = $(el).find('td'),
+			gradeAsText = $tds.eq(3).text(),
+			grade = +(gradeAsText);
+		if (gradeAsText) {
+			sum += grade;
+			numRows++;
+		}
+	});
+	currAverage = sum / numRows;
+}
+
+function computeStandardDeviation() {
+	var sum = 0;
+	var numRows = 0;
+	var table = $(student_table);
+
+	table.find('tr').each(function(i, el) {
+		var $tds = $(el).find('td'),
+			gradeAsText = $tds.eq(3).text(),
+			grade = +(gradeAsText);
+		if (gradeAsText) {
+			sum += Math.pow((grade - currAverage), 2);
+			numRows++;
+		}
+	});
+	currStdDeviation = Math.sqrt(sum / numRows);
+}
+
+function getClassAverage() {
+	return currAverage;
+}
+
+function getClassStdDev() {
+	return currStdDeviation;
 }
 

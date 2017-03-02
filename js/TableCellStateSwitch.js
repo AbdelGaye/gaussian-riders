@@ -75,6 +75,10 @@ var updateClickableCells = function() {
 
 		        	if (isvalid) {
 			        	$this.text(this.value);
+			        	if (cell === "grade") {
+			        			computeClassAverage();
+								computeStandardDeviation();
+			        	}
 			    	} else {
 			    		$this.attr("class", "valid");
 			    		$this.text(lastval);
