@@ -93,6 +93,7 @@ input {
 .lastRow td {
 	border-left: none !important;
 	border-right: none !important;
+	padding-top: 12px;
 }
 
 .clearCell {
