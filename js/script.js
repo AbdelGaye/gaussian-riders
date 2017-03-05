@@ -59,8 +59,8 @@ function addRow() {
 	var td_ln = '<td name="ln"></td>';
 	var td_fn = '<td name="fn"></td>';
 	var td_grade = '<td name="grade"></td>';
-	var td_clearrow = '<td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow("row' + nbRows + '")"/></a></td>';
-	var td_delrow = '<td class="clearCell"><a href="#"><img src="./imgs/minus.png" onclick="deleteRow("row' + nbRows + '")"/></a></td>';
+	var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
+	var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
 	// closing tr
 	var ending_tr = '</tr>';
 
@@ -69,9 +69,25 @@ function addRow() {
 
 	//$(student_table).append('<tr class="row" id="row7"><td name="sid"></td><td name="ln"></td><td name="fn"></td><td name="grade"></td><td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow(\'row7\')"/></a></td></tr>');
 
+	//Deleting or clearing a specific row
+	enableDelete(nbRows);
+
 	// Increment number of rows by 1
 	nbRows++;
 	updateClickableCells();
+}
+
+//Getting the ids of the symbols and take action according to them
+function enableDelete(id_num)
+{
+	document.getElementById("clrow"+id_num.toString()).onclick = function() {clearRow("row"+id_num.toString())};
+	document.getElementById("delrow"+id_num.toString()).onclick = function() {deleteRow("row"+id_num.toString())};
+}
+
+// Javascript function for deleting a specific row
+function deleteRow(row)
+{
+	$('#'+row).remove();
 }
 
 function computeClassAverage() {
