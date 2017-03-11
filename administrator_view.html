@@ -47,20 +47,42 @@
 				</tfoot>
 			</table>
 		</div>
-		<form>
-			Standard deviation:
-			<br>
-			<input id="stdRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'stdText')">
-			<input id="stdText" type="text" class="modificationInput" readonly>
-			<input id="stdSubmit" type="submit" class="modificationInput defaultButton" value="Modify">
-		</form>
-		<form>
-			Average:
-			<br>
-			<input id="avgRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'avgText')">
-			<input id="avgText" type="text" class="modificationInput" readonly>
-			<input id="avgSubmit" type="submit" class="modificationInput defaultButton" value="Modify">
-		</form>
+		<div>
+			<table class="modificationTable">
+				<div class="modificationHeader">
+					<tr>
+						<td>Standard deviation:</td>
+						<td><input id="currentStd" type="text" class="modificationText" readonly></td>
+						<td><a class="modificationApply defaultButton">Compute</a></td>
+					</tr>
+				</div>
+				<div class="modificationRange">
+					<tr>
+						<td><input id="stdRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'stdText')"></td>
+						<td><input id="stdText" type="text" class="modificationText" readonly></td>
+						<td><a class="modificationApply defaultButton">Modify</a></td>
+					</tr>
+				</div>
+			</table>
+		</div>
+		<div>
+			<table class="modificationTable">
+				<div class="modificationHeader">
+					<tr>
+						<td>Average:</td>
+						<td><input id="currentAvg" type="text" class="modificationText" readonly></td>
+						<td><a id="avgCompute" class="modificationApply defaultButton">Compute</a></td>
+					</tr>
+				</div>
+				<div class="modificationRange">
+					<tr>
+						<td><input id="avgRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'avgText')"></td>
+						<td><input id="avgText" type="text" class="modificationText" readonly></td>
+						<td><a class="modificationApply defaultButton">Modify</a></td>
+					</tr>
+				</div>
+			</table>
+		</div>
 	</div>
 </body>
 

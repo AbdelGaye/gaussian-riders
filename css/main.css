@@ -138,7 +138,7 @@ input {
 /* Range slider */
 input[type=range] {
   -webkit-appearance: none;
-  width: 70%;
+  width: 95%;
 }
 input[type=range]:focus {
   outline: none;
@@ -222,7 +222,33 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #660000;
 }
-.modificationInput {
-    width: 10%;
+
+.modificationText {
+    padding-left: 70%;
+    width: 75px;
     padding: 0px 0px;
 }
+
+.modificationApply {
+    padding: 0px 20px;
+    /*float: right;*/
+    width: 75px;
+    text-align: center;
+}
+
+.modificationRange {
+    padding-top: 4px;
+}
+
+.modificationTable {
+    width: 100%;
+}
+
+.modificationTable tr td:first-child {
+    width: 70%;
+}
+
+.modificationTable tr td {
+    width: 10%;
+}
+
