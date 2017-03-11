@@ -47,6 +47,20 @@
 				</tfoot>
 			</table>
 		</div>
+		<form>
+			Standard deviation:
+			<br>
+			<input id="stdRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'stdText')">
+			<input id="stdText" type="text" class="modificationInput" readonly>
+			<input id="stdSubmit" type="submit" class="modificationInput defaultButton" value="Modify">
+		</form>
+		<form>
+			Average:
+			<br>
+			<input id="avgRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'avgText')">
+			<input id="avgText" type="text" class="modificationInput" readonly>
+			<input id="avgSubmit" type="submit" class="modificationInput defaultButton" value="Modify">
+		</form>
 	</div>
 </body>
 

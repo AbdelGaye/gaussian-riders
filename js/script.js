@@ -132,3 +132,8 @@ function getClassStdDev() {
 	return currStdDeviation;
 }
 
+// Function to show range input
+function updateTextInput(val, textInput) {
+	document.getElementById(textInput).value=val; 
+}
+
