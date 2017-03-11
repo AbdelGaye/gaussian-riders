@@ -137,3 +137,10 @@ function updateTextInput(val, textInput) {
 	document.getElementById(textInput).value=val; 
 }
 
+// Make the table visible for new average
+// TODO: Complemte this to add rows according to the new student grades
+// Take inspiration to the addRow function
+function modifyAvg(){
+    var modTable = document.getElementById("mod_table");
+    modTable.style.visibility = "visible";
+}

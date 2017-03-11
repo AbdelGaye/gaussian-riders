@@ -78,9 +78,36 @@
 					<tr>
 						<td><input id="avgRange" min="0" max="100" type="range" onchange="updateTextInput(this.value, 'avgText')"></td>
 						<td><input id="avgText" type="text" class="modificationText" readonly></td>
-						<td><a class="modificationApply defaultButton">Modify</a></td>
+						<td><a class="modificationApply defaultButton" onclick="modifyAvg()">Modify</a></td>
 					</tr>
 				</div>
+			</table>
+		</div>
+		<div id="mod_table" class="tablecontainer">
+			<!-- Note: I believe there is no need for form tags because this will all be client-side -->
+			<table class="sortable maintable">
+				<thead>
+					<tr class="row">
+						<th scope="col" class="maincol sorttable_numeric"><a href="#"></a> Student ID</th>     
+						<th scope="col" class="maincol sorttable_alpha"><a href="#"></a> Last Name</th>
+						<th scope="col" class="maincol sorttable_alpha"><a href="#"></a> First Name</th>
+						<th scope="col" class="maincol sorttable_numeric"><a href="#"></a> Grade</th>
+					</tr>
+				</thead>
+				<tbody id="mod_student_table">
+					<!-- Change ID -->
+					<tr class="row" id="row0">
+						<td name="newSid"></td>
+						<td name="newLn"></td>
+						<td name="newFn"></td>
+						<td name="newGrade"></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="row lastRow">
+						<!-- TODO: Add reset button here -->
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	</div>

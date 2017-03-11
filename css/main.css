@@ -252,3 +252,6 @@ input[type=range]:focus::-ms-fill-upper {
     width: 10%;
 }
 
+#mod_table{
+    visibility: hidden;
+}
