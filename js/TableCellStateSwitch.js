@@ -31,6 +31,21 @@ var updateClickableCells = function() {
 
 	//called when user clicks on a td
 	$('td').on('click', function() {
+		//check if this is in the right table
+		if ($(this).parent('tr').parent('tbody').attr('id') !== "student_table") {
+			return;
+		}
+
+		//hard coded limitation
+		if ($(this).attr('class') === "uneditable") {
+			return;
+		}
+
+		//td with tags other than input should not be editable
+	    if($(this).find("*").length && !$(this).find("input").length) {
+	    	return;
+	    }
+
 	    var $this = $(this);
 	    var cell = $this.attr('name');
 	    var lastval = $this.text();
@@ -57,11 +72,6 @@ var updateClickableCells = function() {
 			}
         }
 
-	    //td with tags other than input should not be editable
-	    if($(this).find("*").length && !$(this).find("input").length) {
-	    	return;
-	    }
-
 	    var $feature = $('<input>', 
 	    	{
 		        value: $this.text(),
@@ -78,6 +88,7 @@ var updateClickableCells = function() {
 			        	if (cell === "grade") {
 			        			computeClassAverage();
 								computeStandardDeviation();
+								updateMeanStd();
 			        	}
 			    	} else {
 			    		$this.attr("class", "valid");

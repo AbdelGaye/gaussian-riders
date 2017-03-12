@@ -34,7 +34,15 @@ function clearColumn(col) {
 		$('[name="grade"]').each(function() {
 			$(this).html('');
 		});
-	}
+    }
+
+    // Clear Adjusted Grade column
+    else if (col === 'adjustedGrade') {
+        // jQuery selector that iterates through each td with name attribute = "grade" and empties td
+        $('[name="adjustedGrade"]').each(function() {
+            $(this).html('');
+        });
+    }
 	else {
 		alert("Invalid Column Type");
 	}
@@ -47,6 +55,7 @@ function clearRow(id) {
 	$('#' + id + ' [name="ln"]').html('');
 	$('#' + id + ' [name="fn"]').html('');
 	$('#' + id + ' [name="grade"]').html('');
+    $('#' + id + ' [name="adjustedGrade"]').html('');
 }
 
 // jQuery Script to add rows dynamically
@@ -59,13 +68,14 @@ function addRow() {
 	var td_ln = '<td name="ln"></td>';
 	var td_fn = '<td name="fn"></td>';
 	var td_grade = '<td name="grade"></td>';
-	var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
+    var td_AdjGrade = '<td name="adjustedGrade" class="uneditable"></td>';
+    var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
 	var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
 	// closing tr
 	var ending_tr = '</tr>';
 
 	// Append table using jQuery
-	$(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_clearrow + td_delrow + ending_tr);
+    $(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_AdjGrade + td_clearrow + td_delrow + ending_tr);
 
 	//$(student_table).append('<tr class="row" id="row7"><td name="sid"></td><td name="ln"></td><td name="fn"></td><td name="grade"></td><td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow(\'row7\')"/></a></td></tr>');
 
@@ -80,8 +90,8 @@ function addRow() {
 //Getting the ids of the symbols and take action according to them
 function enableDelete(id_num)
 {
-	document.getElementById("clrow"+id_num.toString()).onclick = function() {clearRow("row"+id_num.toString())};
-	document.getElementById("delrow"+id_num.toString()).onclick = function() {deleteRow("row"+id_num.toString())};
+	document.getElementById("clrow"+id_num.toString()).onclick = function() {clearRow("row"+id_num.toString()); computeClassAverage(); computeStandardDeviation(); updateMeanStd();};
+	document.getElementById("delrow"+id_num.toString()).onclick = function() {deleteRow("row"+id_num.toString()); computeClassAverage(); computeStandardDeviation(); updateMeanStd();};
 }
 
 // Javascript function for deleting a specific row
@@ -125,16 +135,16 @@ function computeStandardDeviation() {
 }
 
 function getClassAverage() {
-	return currAverage;
+    return currAverage.toFixed(2);
 }
 
 function getClassStdDev() {
-	return currStdDeviation;
+    return currStdDeviation.toFixed(2);
 }
 
 // Function to show range input
-function updateTextInput(val, textInput) {
-	document.getElementById(textInput).value=val; 
+function updateField(val, textInput) {
+	document.getElementById(textInput).innerHTML = val;
 }
 
 // Make the table visible for new average
@@ -144,3 +154,69 @@ function modifyAvg(){
     var modTable = document.getElementById("mod_table");
     modTable.style.visibility = "visible";
 }
+
+
+// convert grades to standardized form Z
+function xToZ(x, Mean, StdDev) {
+    var z = (x-Mean)/StdDev;
+    return z;
+}
+
+// convert standardized z value to standardized grades
+function zToX(z, dMean, dStdDev) {
+    var m = parseFloat(dMean);
+    var x = (z * dStdDev) + m;
+    
+    return x.toFixed(2);
+}
+
+// Function to update the average and stand
+function updateMeanStd() {
+    var mean = getClassAverage();
+    var stdDev = getClassStdDev();
+
+    if (!isNaN(mean)) {
+	    document.getElementById('currentAvg').innerHTML = mean;
+    } else {
+    	document.getElementById('currentAvg').innerHTML = "";
+    }
+
+	if (!isNaN(stdDev)) {
+	    document.getElementById('currentStd').innerHTML = stdDev;
+	} else {
+		document.getElementById('currentStd').innerHTML = "";
+	}
+}
+
+function standardizeGrades() {
+    var table = document.getElementById('student_table');
+ 
+    var mean = getClassAverage();
+    var stdDev = getClassStdDev();
+
+    var desMean = document.getElementById('avgText').innerHTML;
+    var desStd = document.getElementById('stdText').innerHTML;
+
+    if (desMean == "") {
+    	desMean = mean;
+    }
+
+    if (desStd == "") {
+    	desStd = stdDev;
+    }
+
+    //iterate through rows
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        var x = row.cells[3].innerHTML;
+        var z = xToZ(x, mean, stdDev);
+        var newX = zToX(z, desMean, desStd);
+        if (!isNaN(newX)) {
+	        row.cells[4].innerHTML = newX;
+	    }
+    }
+
+}
+
+
+
+
