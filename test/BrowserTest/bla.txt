@@ -1,0 +1,19 @@
+Feature: Buy Item Action
+
+  Scenario: (Normal) Successful Purchase with Correct Search
+    Given customer is on the Home Page
+    When customer inputs "birkenstock and socks" into search text field
+    And customer selects "birkenstock and socks" sticker
+    Then customer adds sticker to cart
+
+  Scenario: (Alternate) Successful Purchase through Category Selection
+    Given customer is on the Home Page
+    When selects the stickers filter category option
+    And customer inputs "birkenstock and socks" into search text field
+    And customer selects "birkenstock and socks" sticker
+    Then customer adds sticker to cart
+
+  Scenario: (Error) Incomplete purchase
+    Given customer is on the Home Page
+    When customer inputs "birkun nd soks" into search text field
+    Then Customer is unable to find search results for “birkenstock and socks” sticker and cannot add it to cart
