@@ -19,7 +19,9 @@
 var stIsIE = /*@cc_on!@*/false;
 
 sorttable = {
+
   init: function() {
+    var t0 = performance.now();
     // quit if this function has already been called
     if (arguments.callee.done) return;
     // flag this function so we don't do the same thing twice
@@ -37,6 +39,8 @@ sorttable = {
       }
     });
 
+    var t1 = performance.now();
+    console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
   },
 
   makeSortable: function(table) {
@@ -90,7 +94,7 @@ sorttable = {
 	      headrow[i].sorttable_columnindex = i;
 	      headrow[i].sorttable_tbody = table.tBodies[0];
 	      dean_addEvent(headrow[i],"click", sorttable.innerSortFunction = function(e) {
-
+   
           if (this.className.search(/\bsorttable_sorted\b/) != -1) {
             // if we're already sorted by this column, just
             // reverse the table, which is quicker
@@ -165,6 +169,7 @@ sorttable = {
 
   guessType: function(table, column) {
     // guess the type of a column based on its first non-blank row
+
     sortfn = sorttable.sort_alpha;
     for (var i=0; i<table.tBodies[0].rows.length; i++) {
       text = sorttable.getInnerText(table.tBodies[0].rows[i].cells[column]);
@@ -241,6 +246,7 @@ sorttable = {
           return '';
       }
     }
+
   },
 
   reverse: function(tbody) {
@@ -259,16 +265,19 @@ sorttable = {
      each sort function takes two parameters, a and b
      you are comparing a[0] and b[0] */
   sort_numeric: function(a,b) {
+
     aa = parseFloat(a[0].replace(/[^0-9.-]/g,''));
     if (isNaN(aa)) aa = 0;
     bb = parseFloat(b[0].replace(/[^0-9.-]/g,''));
     if (isNaN(bb)) bb = 0;
     return aa-bb;
+
   },
   sort_alpha: function(a,b) {
     if (a[0]==b[0]) return 0;
     if (a[0]<b[0]) return -1;
     return 1;
+
   },
   sort_ddmm: function(a,b) {
     mtch = a[0].match(sorttable.DATE_RE);
@@ -330,6 +339,7 @@ sorttable = {
         b++;
 
     } // while(swap)
+
   }
 }
 

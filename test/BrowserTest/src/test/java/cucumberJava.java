@@ -27,18 +27,44 @@ public class cucumberJava {
     public void setup() {
         System.setProperty("webdriver.gecko.driver","C:\\temp\\geckodriver.exe");
         driver = new FirefoxDriver();
+        // driver = new ChromeDriver();
 
     }
 
-    // Normal Flow
-    @Given("^customer is on the Home Page$")
-    public void givenNormalFlow () {
+    @Given("^the User uses Chrome or Firefox")
+    public void givenIndex() {
         //Set implicit wait of 10 seconds and launch google
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("http://localhost:8080/index.html");
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("http://localhost:8080/administrator_view.html#");
+        driver.get("http://cs.mcgill.ca/~fglozm/gaussian-riders/index.html");
     }
+
+    @And("^the User wants to access the index page")
+    public void andIndex() { }
+
+    @When("^the User browses to the index page")
+    public void whenIndex() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://cs.mcgill.ca/~fglozm/gaussian-riders/administrator-view#");
+    }
+
+    @Then("^the index page is generated")
+    public void thenIndex() { }
+
+    @Given("^the wants to use the Administrator View wih Chrome or Firefox")
+    public void givenAdmin() {
+        //Set implicit wait of 10 seconds and launch google
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://cs.mcgill.ca/~fglozm/gaussian-riders/index.html");
+    }
+
+    @When("^the User clicks on the Administrator View button from the index page")
+    public void whenAdmin() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("http://cs.mcgill.ca/~fglozm/gaussian-riders/administrator-view#");
+    }
+
+    @Then("^the administrator view page is generated")
+    public void thenAdmin() { }
 
 
     // Close the web driver safely
