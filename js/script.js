@@ -2,6 +2,11 @@ var nbRows = 1;
 var currAverage = 0;
 var currStdDeviation = 0;
 
+// Resets the table
+function resetTable() {
+	// TODO for Daniele
+}
+
 // Clear column depending on type of column to clear
 function clearColumn(col) {
 	// Make columns non-sortable while clearing them
@@ -216,7 +221,3 @@ function standardizeGrades() {
     }
 
 }
-
-
-
-

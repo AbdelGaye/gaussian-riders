@@ -2,24 +2,30 @@
 <html>
 
 <head>
-	<!-- JavaScript script -->
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+
 	<!-- jQuery Library -->
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+
+	<!-- JavaScript scripts -->
 	<script type="text/javascript" src="js/TableCellStateSwitch.js"></script>
 	<script type="text/javascript" src="js/sorttable.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
 	<title>Grading Assistant - Administrator View</title>
 </head>
 
 <body>
+	<div id="resetbuttoncontainer">
+		<a href="#" onclick="resetTable();"><img id="resetbutton" src="imgs/reset.png" alt="Reset Table" /></a>
+	</div>
     <div id="main">
         <div class="titlebox">
             <h1>Grading Assistant - Administrator View</h1>
         </div>
         <div class="tablecontainer">
-            <!-- Note: I believe there is no need for form tags because this will all be client-side -->
             <table class="sortable maintable">
                 <thead>
                     <tr class="row">
@@ -44,7 +50,6 @@
                 </tbody>
                 <tfoot>
                     <tr class="row lastRow">
-                        <!-- TODO: Add the create new row option, possibly with a fancy + symbol-->
                         <td colspan="5"><a href="#" class="defaultButton" onclick="addRow()">Add Student</a></td>
                     </tr>
                 </tfoot>
@@ -82,8 +87,8 @@
                 </div>
             </table>
         </div>
+
         <div id="mod_table" class="tablecontainer">
-            <!-- Note: I believe there is no need for form tags because this will all be client-side -->
             <table class="sortable maintable">
                 <thead>
                     <tr class="row">
@@ -104,7 +109,6 @@
                 </tbody>
                 <tfoot>
                     <tr class="row lastRow">
-                        <!-- TODO: Add reset button here -->
                     </tr>
                 </tfoot>
             </table>
