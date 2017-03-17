@@ -4,9 +4,12 @@ var currStdDeviation = 0;
 
 // Resets the table
 function resetTable() {
-	// TODO for Daniele
+	clearColumn('sid');
+	clearColumn('ln');
+	clearColumn('fn');
+	clearColumn('grade');
+	clearColumn('adjustedGrade');
 }
-
 // Clear column depending on type of column to clear
 function clearColumn(col) {
 	// Make columns non-sortable while clearing them
