@@ -48,8 +48,7 @@
                         <td name="adjustedGrade" class="uneditable"></td>
                         <td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row0'); computeClassAverage(); computeStandardDeviation(); updateMeanStd();" /></a></td>
                         <td class="clearCell"><a href="#"><img src="./imgs/minus.png" onclick="deleteRow('row0'); computeClassAverage(); computeStandardDeviation(); updateMeanStd();" /></a></td>
-                        <td name="checkbox" class="uneditable"><input type="checkbox" name="cbox0"></input></td>
-
+                        <td name="checkbox" class="clearCell uneditable"><input type="checkbox" name="cbox0" class="cb" /></td>
                     </tr>
 
                 </tbody>
@@ -118,7 +117,7 @@
                 </tfoot>
             </table>
         </div>
-        <div id="graphDiv">
+        <div id="graphDiv" class="generateGraphButton">
             <a href="#" class="defaultButton" onclick="parseData()">Generate Graph</a> 
         </div>
     </div>

@@ -147,6 +147,10 @@ input {
     top:1px;
 }
 
+.generateGraphButton {
+  margin-top: 20px;
+}
+
 /* Range slider */
 input[type=range] {
   -webkit-appearance: none;
@@ -264,7 +268,12 @@ input[type=range]:focus::-ms-fill-upper {
     width: 10%;
 }
 
-#mod_table{
+#mod_table {
     visibility: hidden;
     display: none;
+}
+
+input[type=checkbox] {
+  width: 12px;
+  height: 12px;
 }

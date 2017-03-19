@@ -37,7 +37,7 @@ var updateClickableCells = function() {
 		}
 
 		//hard coded limitation
-		if ($(this).attr('class') === "uneditable") {
+		if ($(this).attr('class') && $(this).attr('class').includes("uneditable")) {
 			return;
 		}
 

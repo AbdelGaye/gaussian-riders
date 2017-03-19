@@ -9,6 +9,7 @@ function resetTable() {
 	clearColumn('fn');
 	clearColumn('grade');
 	clearColumn('adjustedGrade');
+	clearCheckboxes();
 }
 // Clear column depending on type of column to clear
 function clearColumn(col) {
@@ -56,6 +57,15 @@ function clearColumn(col) {
 	}
 }
 
+// Clear all checkboxes
+function clearCheckboxes() {
+	var checkboxes = document.getElementsByClassName("cb");
+
+	for (var i = 0; i < checkboxes.length; i++) {
+		checkboxes[i].checked = false;
+	}
+}
+
 // !!! need to figure out a way to clear a specific row after dynamically adding rows
 function clearRow(id) {
 	// Empty each row's cells content
@@ -72,7 +82,6 @@ function addRow() {
 	// tr
 	var tablerow = '<tr class="row" id="row' + nbRows + '">';
 	// td
-	var td_check_box = '<td name="checkbox" class="uneditable"><input type="checkbox" name="cbox' + nbRows +'"/></td>'
 	var td_sid = '<td name="sid"></td>';
 	var td_ln = '<td name="ln"></td>';
 	var td_fn = '<td name="fn"></td>';
@@ -81,6 +90,7 @@ function addRow() {
 
     var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
 	var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
+	var td_check_box = '<td name="checkbox" class="clearCell uneditable"><input type="checkbox" name="cbox' + nbRows +'" class="cb" /></td>'
 	// closing tr
 	var ending_tr = '</tr>';
 
