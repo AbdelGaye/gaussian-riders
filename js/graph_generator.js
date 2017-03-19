@@ -49,14 +49,6 @@ function parseData()
 		}
 	});
 
-	//alert(btw80_89.toString());
-
-	plotGraph();
-}
-
-//Using plotly library
-function plotGraph()
-{
 	var data = [{
 		x: ['0-9', '10-19', '20-29', '30-39', '40-49',
 		'50-59', '60-69', '70-79', '80-89', '90+'],
@@ -65,5 +57,19 @@ function plotGraph()
 	  	type: 'bar'
 	}];
 
-	Plotly.newPlot('#myDiv', data);
+	var layout = {
+	 title: 'Grade Distribution',
+	  height: 500,
+	  xaxis: {
+	    title: 'Grade',
+	    showgrid: false,
+	    zeroline: false
+	  },
+	  yaxis: {
+	    title: 'Number of Students',
+	    showline: false
+	  }
+	};
+
+	Plotly.newPlot(graphDiv, data, layout, {showLink: false});
 }

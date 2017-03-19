@@ -11,8 +11,10 @@
 	<script type="text/javascript" src="js/TableCellStateSwitch.js"></script>
 	<script type="text/javascript" src="js/sorttable.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/graph_generator.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 	<title>Grading Assistant - Administrator View</title>
 </head>
@@ -112,6 +114,9 @@
                     </tr>
                 </tfoot>
             </table>
+        </div>
+        <div id="graphDiv">
+            <button type="button" onclick="parseData()">Generate Graph</button>
         </div>
     </div>
 </body>
