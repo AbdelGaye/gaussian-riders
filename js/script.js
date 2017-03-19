@@ -218,8 +218,13 @@ function standardizeGrades() {
         var x = row.cells[3].innerHTML;
         var z = xToZ(x, mean, stdDev);
         var newX = zToX(z, desMean, desStd);
-        if (!isNaN(newX)) {
+        if (!isNaN(newX) && newX >= 0) {
 	        row.cells[4].innerHTML = newX;
+	    }
+	    else
+	    {
+	    	//To avoid negative grades
+	    	row.cells[4].innerHTML = 0.00;
 	    }
     }
 
