@@ -72,18 +72,20 @@ function addRow() {
 	// tr
 	var tablerow = '<tr class="row" id="row' + nbRows + '">';
 	// td
+	var td_check_box = '<td name="checkbox" class="uneditable"><input type="checkbox" name="cbox' + nbRows +'"/></td>'
 	var td_sid = '<td name="sid"></td>';
 	var td_ln = '<td name="ln"></td>';
 	var td_fn = '<td name="fn"></td>';
 	var td_grade = '<td name="grade"></td>';
     var td_AdjGrade = '<td name="adjustedGrade" class="uneditable"></td>';
+
     var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
 	var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
 	// closing tr
 	var ending_tr = '</tr>';
 
 	// Append table using jQuery
-    $(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_AdjGrade + td_clearrow + td_delrow + ending_tr);
+    $(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_AdjGrade + td_clearrow + td_delrow + td_check_box + ending_tr);
 
 	//$(student_table).append('<tr class="row" id="row7"><td name="sid"></td><td name="ln"></td><td name="fn"></td><td name="grade"></td><td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow(\'row7\')"/></a></td></tr>');
 
