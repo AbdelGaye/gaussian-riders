@@ -241,3 +241,13 @@ function standardizeGrades() {
     }
 
 }
+
+// Parse data from table
+function parseTableData() {
+    var table = document.getElementById('student_table');
+    var parsedTable = "";
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        parsedTable += row.cells[0].innerHTML + "," + row.cells[1].innerHTML + "," + row.cells[2].innerHTML + "," + row.cells[3].innerHTML + "\r\n";
+    }
+    return parsedTable;
+}
