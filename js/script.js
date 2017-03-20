@@ -241,3 +241,24 @@ function standardizeGrades() {
     }
 
 }
+
+function getSelectedRows() {
+	// JS array that contains the selected row numbers
+	var selectedRows = [];
+	// DOM get all input elements
+	var checkboxes = document.getElementsByTagName("input"); 
+
+	for (var i=0; i<checkboxes.length; i++) {
+		var row = checkboxes[i];
+		// Check if the input's checkbox is checked
+		if (row.checked == true) {
+			selectedRows.push(parseRowNumber(row.name));
+		}
+	}
+} 
+
+function parseRowNumber(row) {
+	// parse int function and use regex to replace all characters except numbers, to empty spaces
+	return parseInt(row.replace(/[^0-9\.]/g, ''));
+}
+
