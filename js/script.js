@@ -242,7 +242,6 @@ function standardizeGrades() {
 
 }
 
-<<<<<<< HEAD
 function getSelectedRows() {
 	// JS array that contains the selected row numbers
 	var selectedRows = [];
@@ -263,7 +262,6 @@ function parseRowNumber(row) {
 	return parseInt(row.replace(/[^0-9\.]/g, ''));
 }
 
-=======
 // Parse data from table
 function parseTableData() {
     var table = document.getElementById('student_table');
@@ -273,4 +271,3 @@ function parseTableData() {
     }
     return parsedTable;
 }
->>>>>>> b9d8820ba0be8ddaf574d5ef19126b88d61676c7
