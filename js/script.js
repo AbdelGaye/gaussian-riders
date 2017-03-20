@@ -271,3 +271,14 @@ function parseTableData() {
     }
     return parsedTable;
 }
+
+// Parse data from csv and return a 2d array
+function parseCSV() {
+    var table = [];
+    var allRows = data.split(/\r?\n|\r/);
+    for (var i = 0, row; row = allRows[i]; i++) {
+        // Store each student row as an array in the table array
+        table.push(row.split(","));
+    }
+    return table;
+}
