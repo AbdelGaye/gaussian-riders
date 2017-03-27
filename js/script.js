@@ -254,7 +254,8 @@ function getSelectedRows() {
 		if (row.checked == true) {
 			selectedRows.push(parseRowNumber(row.name));
 		}
-	}
+    }
+    return selectedRows;
 } 
 
 function parseRowNumber(row) {
@@ -272,8 +273,19 @@ function parseTableData() {
     return parsedTable;
 }
 
+//Parse all columns including adjusted grade from table
+function parseAllTableData() {
+    var table = document.getElementById('student_table');
+    var parsedTable = "";
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        parsedTable += row.cells[0].innerHTML + "," + row.cells[1].innerHTML + "," + row.cells[2].innerHTML + "," + row.cells[3].innerHTML + "," + row.cells[4].innerHTML +  "\r\n";
+    }
+    return parsedTable;
+}
+
+
 // Parse data from csv and return a 2d array
-function parseCSV() {
+function parseCSV(data) {
     var table = [];
     var allRows = data.split(/\r?\n|\r/);
     for (var i = 0, row; row = allRows[i]; i++) {
@@ -282,3 +294,67 @@ function parseCSV() {
     }
     return table;
 }
+
+function exportTableToCSV(tableData,filename) {
+    var blob = new Blob([tableData], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, filename);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", filename + ".csv" );
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+}
+
+
+function exportToCSV() {
+   
+    var tableData = parseTableData();
+    exportTableToCSV(tableData,"SimpleExport");
+}
+
+function exportAllToCSV() {
+    
+    var tableData = parseAllTableData();
+    exportTableToCSV(tableData, "AllExport");
+}
+
+
+
+
+//Parse selected rows and all columns including adjusted grade from table
+function parseSelectedRows(selectedIndex) {
+    var table = document.getElementById('student_table');
+    var parsedTable = "";
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        if (i == selectedIndex) {
+            parsedTable += row.cells[0].innerHTML + "," + row.cells[1].innerHTML + "," + row.cells[2].innerHTML + "," + row.cells[3].innerHTML + "," + row.cells[4].innerHTML + "\r\n";
+        }
+        else {
+            parsedTable += "N/A" + "," + "N/A" + "," + "N/A" + "," + row.cells[3].innerHTML + "," + row.cells[4].innerHTML + "\r\n";
+        }
+    }
+    return parsedTable;
+}
+
+
+
+function exportSelectedToCSV() {
+    var selectedRows = getSelectedRows().toString().split(",");
+    for (var i = 0, len = selectedRows.length; i < len; i++) {
+        var tableData = parseSelectedRows(parseInt(selectedRows[i]));
+        var tempTab = parseCSV(tableData);
+        var fileName = tempTab[i][1];
+        exportTableToCSV(tableData, fileName.toString());
+    }
+}
+
+
