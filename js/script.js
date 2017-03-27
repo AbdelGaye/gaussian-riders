@@ -2,6 +2,10 @@ var nbRows = 1;
 var currAverage = 0;
 var currStdDeviation = 0;
 
+// 2d array containing elements of the student table
+var tableArray = [];
+
+
 // Resets the table
 function resetTable() {
 	clearColumn('sid');
@@ -175,7 +179,6 @@ function modifyAvg(){
     modTable.style.visibility = "visible";
 }
 
-
 // convert grades to standardized form Z
 function xToZ(x, Mean, StdDev) {
     var z = (x-Mean)/StdDev;
@@ -283,7 +286,6 @@ function parseAllTableData() {
     return parsedTable;
 }
 
-
 // Parse data from csv and return a 2d array
 function parseCSV(data) {
     var table = [];
@@ -295,6 +297,7 @@ function parseCSV(data) {
     return table;
 }
 
+// Export input Table to csv file
 function exportTableToCSV(tableData,filename) {
     var blob = new Blob([tableData], { type: 'text/csv;charset=utf-8;' });
     if (navigator.msSaveBlob) { // IE 10+
@@ -314,23 +317,22 @@ function exportTableToCSV(tableData,filename) {
     }
 }
 
-
+// Export ids, names, grades to csv file
 function exportToCSV() {
    
     var tableData = parseTableData();
     exportTableToCSV(tableData,"SimpleExport");
 }
 
+// Export ids, names, grades and adjusted grades to csv file
 function exportAllToCSV() {
     
     var tableData = parseAllTableData();
     exportTableToCSV(tableData, "AllExport");
 }
 
-
-
-
 //Parse selected rows and all columns including adjusted grade from table
+//will save file name as Last Name of student 
 function parseSelectedRows(selectedIndex) {
     var table = document.getElementById('student_table');
     var parsedTable = "";
@@ -345,16 +347,44 @@ function parseSelectedRows(selectedIndex) {
     return parsedTable;
 }
 
-
-
 function exportSelectedToCSV() {
     var selectedRows = getSelectedRows().toString().split(",");
     for (var i = 0, len = selectedRows.length; i < len; i++) {
         var tableData = parseSelectedRows(parseInt(selectedRows[i]));
         var tempTab = parseCSV(tableData);
-        var fileName = tempTab[i][1];
+        var fileName = tempTab[parseInt(selectedRows[i])][1];
         exportTableToCSV(tableData, fileName.toString());
     }
 }
 
+//Import functionality
+function handleFiles(files) {
+    // Check for the various File API support.
+    if (window.FileReader) {
+        // FileReader are supported.
+        getAsText(files[0]);
+    } else {
+        alert('FileReader not supported in this browser.');
+    }
+}
 
+function getAsText(fileToRead) {
+    var reader = new FileReader();
+    // Read file into memory as UTF-8      
+    reader.readAsText(fileToRead);
+    // Handle errors load
+    reader.onload = loadHandler;
+    reader.onerror = errorHandler;
+}
+
+function loadHandler(event) {
+    var csv = event.target.result;
+    tableArray = parseCSV(csv);
+}
+
+function errorHandler(evt) {
+    if (evt.target.error.name == "NotReadableError") {
+        alert("Cannot read file !");
+    }
+}
+//end of import

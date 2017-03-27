@@ -12,7 +12,8 @@
 	<script type="text/javascript" src="js/sorttable.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/graph_generator.js"></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -55,11 +56,8 @@
                 <tfoot>
                     <tr class="row lastRow">
                         <td colspan="5"><a href="#" class="defaultButton" onclick="addRow()">Add Student</a></td>
-                        <td colspan="5"><a href="#" class="defaultButton" onclick="exportToCSV()">Export</a></td>
-                        <td colspan="5"><a href="#" class="defaultButton" onclick="exportAllToCSV()">All</a></td> 
-                        <td colspan="5"><a href="#" class="defaultButton" onclick="exportSelectedToCSV()">Selected</a></td>
-                    
-                        
+                        <td colspan="5"><a href="#" class="defaultButton" onclick="document.getElementById('csvFileInput').click(); return false;" >Import</a></td>
+                        <td colspan="5"><input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv" style="visibility: hidden;"></td>
                     </tr>
                 </tfoot>
             </table>
@@ -123,9 +121,16 @@
             </table>
         </div>
         <div id="graphDiv" class="generateGraphButton">
-            <a href="#" class="defaultButton" onclick="parseData()">Generate Graph</a> 
+            <a href="#" class="defaultButton" onclick="parseData()">Generate Graph</a>
+            <a href="#" style="visibility: hidden;">I suck at the layout and resort to this</a>
+            <a href="#" class="defaultButton" onclick="exportToCSV()">Export</a>
+            <a href="#" class="defaultButton" onclick="exportAllToCSV()">All</a>
+            <a href="#" class="defaultButton" onclick="exportSelectedToCSV()">Selected</a>
         </div>
+        
+
     </div>
+
 </body>
 
 </html>
