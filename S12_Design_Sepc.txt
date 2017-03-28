@@ -1,0 +1,7 @@
+S12: Instructor exports student names, IDs, and grades as a CSV file with adjustment parameters.
+Adjustment parameters: Average, Standard Deviation.
+CSV imports original grades, as well as the adjusted average and adjusted standard deviation. 
+CSV contains one table with student names, IDs, and original grades.
+After the last row of the table, there is a line break which separates the second table which contains the adjustment parameters.
+First row after the line break specifies Adjusted Averaged, which then is separated from the actual value (in the second row). 
+The same procedure is followed for the next row which contains in the first column "Adjusted Standard Deviation", and the actual value in the second column.

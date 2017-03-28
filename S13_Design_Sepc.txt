@@ -1,0 +1,6 @@
+S13: Instructor exports data files for selected students.
+
+Backend will parse and create a CSV file for each selected row. 
+- The CSV file's name will be the selected row's student ID.
+- The CSV will have one header row with "Student ID", "Last Name", "First Name", "Grade", and "Adjusted Grade". The second row will contain the actual data.
+- All CSV files will be stored in a newly created folder with the following name, <Date>_Data_Files
