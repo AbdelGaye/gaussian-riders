@@ -2,8 +2,8 @@ var nbRows = 1;
 var currAverage = 0;
 var currStdDeviation = 0;
 
-// Resets the table
-function resetTable() {
+// Clears the table
+function clearTable() {
 	clearColumn('sid');
 	clearColumn('ln');
 	clearColumn('fn');
@@ -11,6 +11,14 @@ function resetTable() {
 	clearColumn('adjustedGrade');
 	clearCheckboxes();
 }
+
+function resetTable() {
+	for (var i = 0; i < nbRows; i++) {
+		deleteRow('row' + i);
+	}
+	nbRows = 0;
+}
+
 // Clear column depending on type of column to clear
 function clearColumn(col) {
 	// Make columns non-sortable while clearing them
@@ -77,16 +85,23 @@ function clearRow(id) {
 }
 
 // jQuery Script to add rows dynamically
-function addRow() {
+function addRow(sid, ln, fn, grade, adjustedGrade) {
+	if (sid === undefined) sid = "";
+	if (ln === undefined) ln = "";
+	if (fn === undefined) fn = "";
+	if (grade === undefined) grade = "";
+	if (adjustedGrade === undefined) adjustedGrade = "";
+
+
 	// Add table row information
 	// tr
 	var tablerow = '<tr class="row" id="row' + nbRows + '">';
 	// td
-	var td_sid = '<td name="sid"></td>';
-	var td_ln = '<td name="ln"></td>';
-	var td_fn = '<td name="fn"></td>';
-	var td_grade = '<td name="grade"></td>';
-    var td_AdjGrade = '<td name="adjustedGrade" class="uneditable"></td>';
+	var td_sid = '<td name="sid">' + sid + '</td>';
+	var td_ln = '<td name="ln">' + ln + '</td>';
+	var td_fn = '<td name="fn">' + fn + '</td>';
+	var td_grade = '<td name="grade">' + grade + '</td>';
+    var td_AdjGrade = '<td name="adjustedGrade" class="uneditable">' + adjustedGrade + '</td>';
 
     var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
 	var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
@@ -110,8 +125,8 @@ function addRow() {
 //Getting the ids of the symbols and take action according to them
 function enableDelete(id_num)
 {
-	document.getElementById("clrow"+id_num.toString()).onclick = function() {clearRow("row"+id_num.toString()); computeClassAverage(); computeStandardDeviation(); updateMeanStd();};
-	document.getElementById("delrow"+id_num.toString()).onclick = function() {deleteRow("row"+id_num.toString()); computeClassAverage(); computeStandardDeviation(); updateMeanStd();};
+	document.getElementById("clrow"+id_num.toString()).onclick = function() {clearRow("row"+id_num.toString()); refreshStats();};
+	document.getElementById("delrow"+id_num.toString()).onclick = function() {deleteRow("row"+id_num.toString()); refreshStats();};
 }
 
 // Javascript function for deleting a specific row

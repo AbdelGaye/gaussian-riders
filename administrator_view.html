@@ -24,7 +24,7 @@
 
 <body>
 	<div id="resetbuttoncontainer">
-		<a href="#" onclick="resetTable();"><img id="resetbutton" src="imgs/reset.png" alt="Reset Table" /></a>
+		<a href="#" onclick="clearTable();"><img id="resetbutton" src="imgs/reset.png" alt="Reset Table" /></a>
 	</div>
     <div id="main">
         <div class="titlebox">
@@ -37,7 +37,7 @@
                         <th scope="col" class="maincol sorttable_numeric"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('sid')" /></a> Student ID</th>
                         <th scope="col" class="maincol sorttable_alpha"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('ln')" /></a> Last Name</th>
                         <th scope="col" class="maincol sorttable_alpha"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('fn')" /></a> First Name</th>
-                        <th scope="col" class="maincol sorttable_numeric"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade'); clearColumn('adjustedGrade'); computeClassAverage(); computeStandardDeviation(); updateMeanStd();" /></a> Grade</th>
+                        <th scope="col" class="maincol sorttable_numeric"><a href="#"><img src="./imgs/clear.png" onclick="clearColumn('grade'); clearColumn('adjustedGrade'); refreshStats();" /></a> Grade</th>
                         <th scope="col" class="maincol sorttable_numeric">Adjusted Grade</th>
                     </tr>
                 </thead>
@@ -49,17 +49,16 @@
                         <td name="fn"></td>
                         <td name="grade"></td>
                         <td name="adjustedGrade" class="uneditable"></td>
-                        <td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row0'); computeClassAverage(); computeStandardDeviation(); updateMeanStd();" /></a></td>
-                        <td class="clearCell"><a href="#"><img src="./imgs/minus.png" onclick="deleteRow('row0'); computeClassAverage(); computeStandardDeviation(); updateMeanStd();" /></a></td>
+                        <td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow('row0'); refreshStats();" /></a></td>
+                        <td class="clearCell"><a href="#"><img src="./imgs/minus.png" onclick="deleteRow('row0'); refreshStats();" /></a></td>
                         <td name="checkbox" class="clearCell uneditable"><input type="checkbox" name="cbox0" class="cb" /></td>
                     </tr>
 
                 </tbody>
                 <tfoot>
                     <tr class="row lastRow">
-                        <td colspan="5"><a href="#" class="defaultButton" onclick="addRow()">Add Student</a></td>
-                        <td colspan="5"><a href="#" class="defaultButton" onclick="document.getElementById('csvFileInput').click(); return false;" >Import</a></td>
-                        <td colspan="5"><input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv" style="visibility: hidden;"></td>
+                        <td colspan="4"><a href="#" class="defaultButton" onclick="addRow()">Add Student</a></td>
+                        <td><a href="#" class="defaultButton" onclick="document.getElementById('csvFileInput').click(); return false;">Import</a><input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv" class="invisible"></td>
                     </tr>
                 </tfoot>
             </table>
@@ -97,7 +96,7 @@
             </table>
         </div>
 
-        <div id="mod_table" class="tablecontainer">
+        <div id="mod_table" class="tablecontainer invisible">
             <table class="sortable maintable">
                 <thead>
                     <tr class="row">

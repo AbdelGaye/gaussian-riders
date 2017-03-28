@@ -268,12 +268,12 @@ input[type=range]:focus::-ms-fill-upper {
     width: 10%;
 }
 
-#mod_table {
+.invisible {
     visibility: hidden;
     display: none;
 }
 
 input[type=checkbox] {
-  width: 12px;
-  height: 12px;
+    width: 12px;
+    height: 12px;
 }

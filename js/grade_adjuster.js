@@ -116,5 +116,18 @@ function standardizeGrades() {
 	    	row.cells[4].innerHTML = 0.00;
 	    }
     }
+}
 
+function resetSliders() {
+	document.getElementById('avgRange').value = 50;
+	document.getElementById('avgText').innerHTML = "";
+
+	document.getElementById('stdRange').value = 15;
+	document.getElementById('stdText').innerHTML = "";
+}
+
+function refreshStats() {
+	computeClassAverage();
+    computeStandardDeviation();
+    updateMeanStd();
 }

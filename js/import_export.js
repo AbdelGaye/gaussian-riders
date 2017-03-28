@@ -117,7 +117,7 @@ function getAsText(fileToRead) {
 function loadHandler(event) {
     var csv = event.target.result;
     var tableArray = parseCSV(csv);
-    console.log(tableArray);
+    populateTable(tableArray);
 }
 
 function errorHandler(evt) {
@@ -126,3 +126,12 @@ function errorHandler(evt) {
     }
 }
 //end of import
+
+function populateTable(data) {
+    resetTable();
+    data.forEach(function(row) {
+        addRow(row[0], row[1], row[2], row[3], row[4]);
+    });
+    refreshStats();
+    resetSliders();
+}
