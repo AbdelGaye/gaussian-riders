@@ -20,10 +20,9 @@ var stIsIE = /*@cc_on!@*/false;
 
 sorttable = {
 
-  init: function() {
-    var t0 = performance.now();
+  init: function(force) {
     // quit if this function has already been called
-    if (arguments.callee.done) return;
+    if (arguments.callee.done && !force) return;
     // flag this function so we don't do the same thing twice
     arguments.callee.done = true;
     // kill the timer
@@ -38,9 +37,6 @@ sorttable = {
         sorttable.makeSortable(table);
       }
     });
-
-    var t1 = performance.now();
-    console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
   },
 
   makeSortable: function(table) {

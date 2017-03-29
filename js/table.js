@@ -1,6 +1,4 @@
 var nbRows = 1;
-var currAverage = 0;
-var currStdDeviation = 0;
 
 // Clears the table
 function clearTable() {
@@ -10,6 +8,33 @@ function clearTable() {
 	clearColumn('grade');
 	clearColumn('adjustedGrade');
 	clearCheckboxes();
+}
+
+// For student only
+function createTable() {
+	var table ="\
+	            <table class=\"sortable maintable\">\
+                <thead>\
+                    <tr class=\"row\">\
+                        <th scope=\"col\" class=\"maincol sorttable_nosort\">Student ID</th>\
+                        <th scope=\"col\" class=\"maincol sorttable_nosort\">Last Name</th>\
+                        <th scope=\"col\" class=\"maincol sorttable_nosort\">First Name</th>\
+                        <th scope=\"col\" class=\"maincol sorttable_numeric\">Grade</th>\
+                        <th scope=\"col\" class=\"maincol sorttable_numeric\">Adjusted Grade</th>\
+                    </tr>\
+                </thead>\
+                <tbody id=\"student_table\">\
+                </tbody>\
+                <tfoot>\
+                    <tr class=\"row lastRow\">\
+                        <td colspan=\"5\"><a href=\"#\" class=\"defaultButton\" onclick=\"document.getElementById('csvFileInput').click(); return false;\">Import</a><input type=\"file\" id=\"csvFileInput\" onchange=\"createTable(false); handleFiles(this.files)\" accept=\".csv\" class=\"invisible\"></td>\
+                    </tr>\
+                </tfoot>\
+            </table>"
+
+    document.getElementsByClassName('tablecontainer')[0].innerHTML = table;
+
+    sorttable.init(true);
 }
 
 function resetTable() {
@@ -92,34 +117,61 @@ function addRow(sid, ln, fn, grade, adjustedGrade) {
 	if (grade === undefined) grade = "";
 	if (adjustedGrade === undefined) adjustedGrade = "";
 
+	var studentView = document.title.includes("Student View");
 
-	// Add table row information
-	// tr
-	var tablerow = '<tr class="row" id="row' + nbRows + '">';
-	// td
-	var td_sid = '<td name="sid">' + sid + '</td>';
-	var td_ln = '<td name="ln">' + ln + '</td>';
-	var td_fn = '<td name="fn">' + fn + '</td>';
-	var td_grade = '<td name="grade">' + grade + '</td>';
-    var td_AdjGrade = '<td name="adjustedGrade" class="uneditable">' + adjustedGrade + '</td>';
+	// Duplicate code galore!
+	if (studentView) {
+		// Add table row information
+		// tr
+		var tablerow = '<tr class="row" id="row' + nbRows + '">';
+		// td
+		var td_sid, td_ln, td_fn, td_grade, td_AdJGrade;
 
-    var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
-	var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
-	var td_check_box = '<td name="checkbox" class="clearCell uneditable"><input type="checkbox" name="cbox' + nbRows +'" class="cb" /></td>'
-	// closing tr
-	var ending_tr = '</tr>';
+		if (sid != "N/A") {
+			td_sid = '<td name="sid">' + sid + '</td>';
+			td_ln = '<td name="ln">' + ln + '</td>';
+			td_fn = '<td name="fn">' + fn + '</td>';
+		} else {
+			td_sid = '<td name="sid" class="anonymous"></td>';
+			td_ln = '<td name="ln" class="anonymous"></td>';
+			td_fn = '<td name="fn" class="anonymous"></td>';
+		}
 
-	// Append table using jQuery
-    $(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_AdjGrade + td_clearrow + td_delrow + td_check_box + ending_tr);
+		td_grade = '<td name="grade">' + grade + '</td>';
+	    td_AdjGrade = '<td name="adjustedGrade">' + adjustedGrade + '</td>';
+		// closing tr
+		var ending_tr = '</tr>';
 
-	//$(student_table).append('<tr class="row" id="row7"><td name="sid"></td><td name="ln"></td><td name="fn"></td><td name="grade"></td><td class="clearCell"><a href="#"><img src="./imgs/clear.png" onclick="clearRow(\'row7\')"/></a></td></tr>');
+		// Append table using jQuery
+	    $(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_AdjGrade + ending_tr);
+	} else {
+		// Add table row information
+		// tr
+		var tablerow = '<tr class="row" id="row' + nbRows + '">';
+		// td
+		var td_sid = '<td name="sid">' + sid + '</td>';
+		var td_ln = '<td name="ln">' + ln + '</td>';
+		var td_fn = '<td name="fn">' + fn + '</td>';
+		var td_grade = '<td name="grade">' + grade + '</td>';
+	    var td_AdjGrade = '<td name="adjustedGrade" class="uneditable">' + adjustedGrade + '</td>';
 
-	//Deleting or clearing a specific row
-	enableDelete(nbRows);
+	    var td_clearrow = '<td class="clearCell" id="clrow' + nbRows + '"><a href="#"><img src="./imgs/clear.png" /></a></td>';
+		var td_delrow = '<td class="clearCell" id="delrow' + nbRows + '"><a href="#"><img src="./imgs/minus.png" /></a></td>';
+		var td_check_box = '<td name="checkbox" class="clearCell uneditable"><input type="checkbox" name="cbox' + nbRows +'" class="cb" /></td>'
+		// closing tr
+		var ending_tr = '</tr>';
+
+		// Append table using jQuery
+	    $(student_table).append(tablerow + td_sid + td_ln + td_fn + td_grade + td_AdjGrade + td_clearrow + td_delrow + td_check_box + ending_tr);
+
+		//Deleting or clearing a specific row
+		enableDelete(nbRows);
+
+		updateClickableCells();
+	}
 
 	// Increment number of rows by 1
 	nbRows++;
-	updateClickableCells();
 }
 
 //Getting the ids of the symbols and take action according to them

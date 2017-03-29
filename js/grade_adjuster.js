@@ -1,3 +1,6 @@
+var currAverage = 0;
+var currStdDeviation = 0;
+
 function computeClassAverage() {
 	var sum = 0;
 	var numRows = 0;
