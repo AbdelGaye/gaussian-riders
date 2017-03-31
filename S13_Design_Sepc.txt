@@ -4,3 +4,8 @@ Backend will parse and create a CSV file for each selected row.
 - The CSV file's name will be the selected row's student ID.
 - The CSV will have one header row with "Student ID", "Last Name", "First Name", "Grade", and "Adjusted Grade". The second row will contain the actual data.
 - All CSV files will be stored in a newly created folder with the following name, <Date>_Data_Files
+
+HIDDEN DATA:
+- Get and save selected row's student id, last name, first name, and most importantly the row number.
+- Do a regex and replace all characters by empty spaces, as well as all numbers with more than 3 digits by empty spaces as well, since a student id is usually bigger than 3 digits.
+- Since we know which row is the selected one, we can simply put back the selected row's student id, last name and first name in the correct row.
